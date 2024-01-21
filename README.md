@@ -41,19 +41,25 @@ The script is organized into several functions for modular and clear code struct
 5. `fill_contours(image, contours, thickness, fill_color)`: Fills contours with a specified color in the given image.
 6. `draw_contours(image, contours, fill_color, thickness)`: Draws contour lines on the given image based on binary contour data.
 7. `display_images(images, titles)`: Displays a list of images with corresponding titles.
-8. `main(img_path, contour_line_thickness, white_bg=False, contour_fill_color=(253, 253, 253))`: Main function orchestrating the processing steps and allowing customization.
+8. `main()`: Main function orchestrating the processing steps and allowing customization.
 
 ## Instructions
+
 1. **Installation:**
    - Install required libraries: `Pillow` and `matplotlib`.
    - Ensure Python is installed on the system.
 
 2. **Usage:**
-   - Modify `img_path` to the desired image file path.
-   - Customize optional parameters in the `main` function.
-   - Run the script to visualize image contours.
-
+   - Run the script from the command line with the following command:
+     ```bash
+     python contour_processor.py --img_path <image_path> --contour_line_thickness <line_thickness> --contour_fill_color colorname
+     ```
+   - Example:
+     ```bash
+     python contour_processor.py --img_path images/1.jpg --contour_line_thickness 15 --contour_fill_color lightgray
+     ```
+   
 3. **Customization:**
-   - Adjust `contour_line_thickness` for varying line thickness.
-   - Set `white_bg` to `True` for a white background.
-   - Modify `contour_fill_color` to change the filled contour color.
+   - `--contour_line_thickness`: Adjust the thickness of contour lines.
+   - `--white_bg`: Add this flag to display images with a white background.
+   - `--contour_fill_color`: Specify RGB values for filling contour areas.
