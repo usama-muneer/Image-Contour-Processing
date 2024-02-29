@@ -86,11 +86,11 @@ class ImageTextAdder:
         
         # Draw global bounding box with WHITE background
         text_box = [x_min, y_min, x_max, y_max]
-        draw.rectangle(text_box, fill=(255, 255, 255)) # white background
+        draw.rectangle(text_box, fill=self.background_color) # white background
         
         # Draw text on image
         for x, y, text in text_coords_list:
-            draw.text((x, y), text, font=font, fill=(0, 11, 0))
+            draw.text((x, y), text, font=font, fill=(0, 0, 0))
         
         return True
     
@@ -114,8 +114,8 @@ class ImageTextAdder:
 
 if __name__ == "__main__":
     text_adder = ImageTextAdder(image_path="images/1.jpg",
-                                text="SAMPLE TEXT \n sample text",
-                                font_size=45,
+                                text="Create image text\n adder that help \nautomate \ntext adding tasks\n",
+                                font_size=12,
                                 font_family="https://www.freefontspro.com/14454/arial.ttf",
                                 background_color=(255, 45, 62))
     text_adder.add_text_to_image()
