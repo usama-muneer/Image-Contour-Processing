@@ -113,11 +113,11 @@ class ImageTextAdder:
     
 
 if __name__ == "__main__":
-    text_adder = ImageTextAdder(image_path="images/1.jpg",
-                                text="Create image text\n adder that help \nautomate \ntext adding tasks\n",
-                                font_size=12,
+    text_adder = ImageTextAdder(image_path="images/lenna-grey.png",
+                                text="Sample text \n sample text",
+                                font_size=50,
                                 font_family="https://www.freefontspro.com/14454/arial.ttf",
-                                background_color=(255, 45, 62))
+                                background_color=(255, 255, 255))
     text_adder.add_text_to_image()
     img = text_adder.save_image(output_path="result.jpg")
     img.show()
