@@ -8,10 +8,10 @@
 
 """
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 class ImageTextAdder:
-    def __init__(self, image_path, text, font_size, font_family, background_color):
+    def __init__(self, image_path, text, font_size, font_family, background_color, mode):
         """
         Initialize ImageTextAdder object.
 
@@ -27,6 +27,7 @@ class ImageTextAdder:
         self.font_size = font_size
         self.font_family = font_family
         self.background_color = background_color
+        self.mode = mode
         self.image = None
     
     def add_text_to_image(self):
@@ -38,6 +39,7 @@ class ImageTextAdder:
         """
         # Open the image
         self.image = Image.open(self.image_path)
+        self.image = self.image.convert(self.mode)
         
         # Get image dimensions and calculate center coordinates
         image_width, image_height = self.image.size
@@ -90,11 +92,11 @@ class ImageTextAdder:
         
         # Draw text on image
         for x, y, text in text_coords_list:
-            draw.text((x, y), text, font=font, fill=(0, 0, 0))
+            draw.text((x, y), text, font=font, fill="black")
         
         return True
     
-    def save_image(self, output_path):
+    def save_image(self, output_path, smooth_image_flag=False):
         """
         Save the modified image.
 
@@ -113,11 +115,12 @@ class ImageTextAdder:
     
 
 if __name__ == "__main__":
-    text_adder = ImageTextAdder(image_path="images/lenna-grey.png",
+    text_adder = ImageTextAdder(image_path="images/lenna.png",
                                 text="Sample text \n sample text",
-                                font_size=50,
+                                font_size=70,
                                 font_family="https://www.freefontspro.com/14454/arial.ttf",
-                                background_color=(255, 255, 255))
+                                background_color='white',
+                                mode='1') # mode -> RGB, L, 1
     text_adder.add_text_to_image()
     img = text_adder.save_image(output_path="result.jpg")
     img.show()
